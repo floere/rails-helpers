@@ -74,7 +74,8 @@ def locale locale, &block
   end
   def self.it_should_not_have_missing_translations
     it "should have everything translated" do
-      response.should_not match(/translation missing/)
+      response.body.should_not =~ /translation missing/
+      response.body.should_not =~ /translation_missing/
     end
   end
   
