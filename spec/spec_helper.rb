@@ -61,10 +61,20 @@ end
 #    it_should_be_translated "#bla button[value=?]", "Some Translation"
 #  end
 #
+#  Also:
+#  locale 'en' do
+#    it_should_not_have_missing_translations # checks for the string "missing translation"
+#  end
+#
 def locale locale, &block
   def self.it_should_be_translated(selector, translation)
     it "#{selector} should have translation #{translation}" do
       response.should have_tag(selector, translation)
+    end
+  end
+  def self.it_should_not_have_missing_translations
+    it "should have everything translated" do
+      response.should_not match(/translation missing/)
     end
   end
   
