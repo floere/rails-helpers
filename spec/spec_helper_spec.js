@@ -1,3 +1,9 @@
+// Run specs with
+// js -f spec/spec_helper.js -f ./public/javascripts/<your to be tested file>.js spec/public/javascripts/<your to be tested file>.js
+//
+
+// Do the specs basically work?
+//
 context('specs work?',
   function setup() {
     someValue = 'some value';
@@ -8,6 +14,9 @@ context('specs work?',
     });
   }
 );
+
+// Can we nest the context's descriptions?
+//
 context('nested contexts',
   false, // no setup
   function specs() {
@@ -24,6 +33,36 @@ context('nested contexts',
       function specs() {
         it('should be described correctly', function() {
           return this.context_description == 'nested contexts other inner context';
+        });
+      }
+    );
+  }
+);
+
+// Can we nest the context's setups?
+//
+context('nested contexts',
+  function setup() {
+    someValue = 'some value';
+  },
+  function specs() {
+    context('inner context',
+      function setup() {
+        someOtherValue = 'other value';
+      },
+      function specs() {
+        it('should have a set someValue', function() {
+          return someValue == 'some value' && someOtherValue == 'other value';
+        });
+      }
+    );
+    context('other inner context',
+      function setup() {
+        someOtherValue = 'yet another value';
+      },
+      function specs() {
+        it('should have a set someValue', function() {
+          return someValue == 'some value' && someOtherValue == 'yet another value';
         });
       }
     );
