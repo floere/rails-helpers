@@ -1,6 +1,19 @@
 // Run specs with
 // js -f spec/spec_helper.js -f ./public/javascripts/<your to be tested file>.js spec/public/javascripts/<your to be tested file>.js
 //
+// For maximum fun, add a command to TextMate to be run on Command-R.
+//
+// Spec example:
+// context('specs work?',
+//   function setup() {
+//     objectToTest = new SomeCoolObject('param1', 100);
+//   },  
+//   function specs() {
+//     it('should do this', function() {
+//       return objectToTest.doThis() == 'someAnswerWeExpect';
+//     });
+//   }
+// );
 
 // Do the specs basically work?
 //
