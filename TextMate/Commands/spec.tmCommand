@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>#!/usr/bin/ruby
+
+project_path = ENV['TM_PROJECT_DIRECTORY']
+spec_path = ENV['TM_FILEPATH']
+js_path   = spec_path.gsub(/\/spec/, '').gsub!(/_spec/,'')
+
+`js -f #{project_path}/spec/spec_helper.js -f #{js_path} #{spec_path}`</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>@r</string>
+	<key>name</key>
+	<string>spec</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>scope</key>
+	<string>source.js</string>
+	<key>uuid</key>
+	<string>59F1BA1F-7B62-4B9F-9485-DB9E640EDD60</string>
+</dict>
+</plist>
